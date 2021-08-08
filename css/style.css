@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    /* height: 100%; */
+    background-color: rgba(25, 42, 136, 0.733);
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+}
+
+input {
+    width: 270px;
+    height: 70px;
+    outline: none;
+    text-align: right;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: none;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    padding: 3px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    font-size: 30px;
+}
+
+.ariph-section {
+    display: flex;
+}
+
+.divide-btn,
+.time-btn,
+.plus-btn,
+.equals-btn,
+.minus-btn {
+    width: 54px;
+    border: 0.1px solid rgb(199, 199, 199);
+    background-color: lightgrey;
+    font-weight: 100;
+}
+
+.divide-btn:active,
+.time-btn:active,
+.plus-btn:active,
+.equals-btn:active,
+.minus-btn:active {
+    background-color: lightcyan;
+}
+
+.numbers-section {
+    width: 270px;
+    display: flex;
+}
+
+.numbers-section button {
+    width: 90px;
+    height: 50px;
+    border: 0.1px solid gray;
+}
+
+.numbers-section button:active {
+    background-color: burlywood;
+}
+
+.clear-btn {
+    border-bottom-right-radius: 5px;
+    background-color: chocolate;
+    border: none;
+}
+
+.zero-btn {
+    border-bottom-left-radius: 5px;
+}
