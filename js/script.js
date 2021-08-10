@@ -1,5 +1,5 @@
 // Other 
-let inputBox = document.getElementById('inputNumber');
+let inputBox = document.createElement('input');
 let pointBtn = document.getElementById('pointBtn');
 let clearBtn = document.getElementById('clearBtn');
 //Ariphmetic
@@ -20,16 +20,32 @@ let twoBtn = document.getElementById('twoBtn');
 let oneBtn = document.getElementById('oneBtn');
 let zeroBtn = document.getElementById('zeroBtn');
 
+let inputSection = document.getElementById('inputSection');
+let numbersHeader
+let symbolsHeader;
+
+
+
 let currentNum1;
 let currentNum2;
 let symb;
-
 init()
 
 function init() {
     currentNum1 = '';
     currentNum2 = '';
     symb = '';
+
+    numbersHeader = document.createElement('span');
+    symbolsHeader = document.createElement('span');
+
+    inputSection.appendChild(numbersHeader);
+    inputSection.appendChild(symbolsHeader);
+    inputSection.appendChild(inputBox);
+
+    numbersHeader.innerText = '';
+    symbolsHeader.innerText = '';
+
 }
 
 // Buttons
@@ -43,6 +59,15 @@ threeBtn.addEventListener('click', () => { three() });
 twoBtn.addEventListener('click', () => { two() });
 oneBtn.addEventListener('click', () => { one() });
 zeroBtn.addEventListener('click', () => { zero() });
+
+
+pointBtn.addEventListener('click', () => { dot() });
+
+function dot() {
+    dotBtn = '.';
+    inputBox.value += dotBtn;
+}
+
 
 function zero() {
     inputBox.value += 0;
@@ -85,88 +110,79 @@ function nine() {
 }
 
 // Other
+
 clearBtn.addEventListener('click', () => { clear() });
 
 function clear() {
+    numbersHeader.innerText = '';
+    symbolsHeader.innerText = '';
     inputBox.value = '';
-    init();
+
 }
 
 plusBtn.addEventListener('click', () => {
-    currentNum1 = inputBox.value;
-    currentNum1 = parseInt(currentNum1);
     symb = '+';
-    inputBox.value = '';
+    firstNum(symb);
 });
 
 function plus(num1, num2) {
-    console.log("plus");
-
     return num1 + num2;
-
 }
 
 minusBtn.addEventListener('click', () => {
-    currentNum1 = inputBox.value;
-    currentNum1 = parseInt(currentNum1);
     symb = '-';
-    inputBox.value = '';
+    firstNum(symb);
 });
 
 function minus(num1, num2) {
-    console.log("minus");
-
     return num1 - num2;
 }
 
 timeBtn.addEventListener('click', () => {
-    currentNum1 = inputBox.value;
-    currentNum1 = parseInt(currentNum1);
     symb = '*';
-    inputBox.value = '';
+    firstNum(symb);
 });
 
 function multiple(num1, num2) {
-    console.log("multiple");
-
     return num1 * num2;
 }
 
 divideBtn.addEventListener('click', () => {
-    currentNum1 = inputBox.value;
-    currentNum1 = parseInt(currentNum1);
     symb = '/';
-    inputBox.value = '';
+    firstNum(symb);
 });
 
 function divide(num1, num2) {
-    console.log("divide");
-
     return num1 / num2;
-
 }
 
 equalsBtn.addEventListener('click', () => {
-    currentNum2 = inputBox.value;
-    currentNum2 = parseInt(currentNum2);
-
-
-    console.log('symb => ', symb);
-
+    resultDisplay();
     if (symb == '+') {
-        inputBox.value = plus(currentNum1, currentNum2);
-
+        numbersHeader.innerText = plus(currentNum1, currentNum2);
     } else if (symb == '-') {
-
-        inputBox.value = minus(currentNum1, currentNum2);
-
+        numbersHeader.innerText = minus(currentNum1, currentNum2);
     } else if (symb == '*') {
-
-        inputBox.value = multiple(currentNum1, currentNum2);
-
+        numbersHeader.innerText = multiple(currentNum1, currentNum2);
     } else if (symb == '/') {
-
-        inputBox.value = divide(currentNum1, currentNum2);
+        numbersHeader.innerText = divide(currentNum1, currentNum2);
     }
 
 });
+
+function firstNum(symbol) {
+    currentNum1 = inputBox.value;
+    currentNum1 = parseFloat(currentNum1);
+    numbersHeader.innerText = currentNum1;
+    symbolsHeader.innerText = symbol;
+    inputBox.value = '';
+}
+
+function resultDisplay() {
+
+    currentNum2 = inputBox.value;
+    currentNum2 = parseFloat(currentNum2);
+    numbersHeader.style.fontSize = '50px';
+    symbolsHeader.remove()
+    inputBox.remove()
+}
