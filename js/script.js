@@ -80,8 +80,6 @@ function nine() { inputBox.value += 9; }
 clearBtn.addEventListener('click', () => { clear() });
 
 function clear() {
-    numbersHeader.innerText = '';
-    symbolsHeader.innerText = '';
     inputBox.value = '';
 }
 
